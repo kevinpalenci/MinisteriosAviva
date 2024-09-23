@@ -1,0 +1,136 @@
+/* Ejemplo de estilos para el diseño */
+.carousel-item {
+    height: 75vh; /* Ajusta el valor según el tamaño que desees */
+}
+.carousel-item img {
+    object-fit: contain; /* Muestra la imagen completa sin recortarla */
+    width: 100%;
+    height: auto;
+}
+
+.navbar-brand img {
+    width: 60PX; /* Ajusta el ancho del logotipo */
+    height: auto; /* Mantiene la proporción del logotipo */
+}
+
+#nosotros {
+    padding: 50px 0;
+}
+
+#contacto {
+    padding: 50px 0;
+}
+
+/* Espaciado adicional en el footer */
+footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #343a40;
+    color: white;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer hr {
+    border-top: 1px solid white;
+}
+
+/* Espaciado adicional entre secciones */
+section {
+    margin-bottom: 50px;
+}
+
+#map iframe {
+    width: 100%;
+    height: 400px;
+}
+
+/* Elimina margen superior del carousel */
+#carouselExampleIndicators {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Navbar fijo */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; /* Asegúrate de que tenga fondo para que no se vea transparente */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade un sombreado si lo deseas */
+}
+
+/* Asegurarse de que el contenido no quede debajo del navbar */
+body {
+    padding-top: 70px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Estilos del formulario */
+.contact-section .info-box {
+    margin-bottom: 20px;
+}
+
+.contact-section h5 {
+    font-weight: bold;
+}
+
+.contact-section p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Estilos del parallax */
+.parallax-section {
+    position: relative;
+    background-image: url('path-to-your-image.jpg'); /* Reemplaza con tu imagen */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+.parallax-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Oscurece un poco la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.parallax-section .overlay .content h1 {
+    color: #fff;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.parallax-section .overlay .content p {
+    color: #fff;
+    font-size: 18px;
+}
+
+.parallax-section .overlay .content .btn {
+    margin-top: 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+}
