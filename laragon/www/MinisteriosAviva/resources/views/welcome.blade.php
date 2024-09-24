@@ -9,6 +9,51 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <style>
+        /* Estilos del parallax */
+.parallax-section {
+    position: relative;
+    background-image: url('images/backplay.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+.parallax-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Oscurece un poco la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.parallax-section .overlay .content h1 {
+    color: #fff;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.parallax-section .overlay .content p {
+    color: #fff;
+    font-size: 18px;
+}
+
+.parallax-section .overlay .content .btn {
+    margin-top: 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+    </style>
 </head>
 
 <body>
@@ -61,14 +106,14 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('images/portada1.png') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('images/portada 2.jpeg') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>¡Únete a nuestra comunidad Ministerios Aviva!</h5>
                     <p>Te invitamos a formar parte de Ministerios Aviva...</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('images/portada1.png') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('images/portada 3.jpeg') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>¡Únete a nuestra comunidad Ministerios Aviva!</h5>
                     <p>Te invitamos a formar parte de Ministerios Aviva...</p>
@@ -239,23 +284,18 @@
 
             <!-- Quédate con Nosotros -->
             <div class="col-md-3">
-                <h5>QUÉDATE CON NOSOTROS</h5>
-                <p><i class="fas fa-map-marker-alt"></i> Barrio Minerva, Guastatoya, El Progreso, Guatemala</p>
-                <p><i class="fas fa-envelope"></i> unidad234elprogreso@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +502 7945-1691</p>
-                <p><i class="fas fa-clock"></i> Emergencia las 24 horas.</p>
+                <h5>Comunicate con nosotros:</h5>
+                <p><i class="fas fa-map-marker-alt"></i>LUGAR</p>
+                <p><i class="fas fa-envelope"></i>CORREO</p>
+                <p><i class="fas fa-phone"></i>TELEFONO</p>
+                <p><i class="fas fa-clock"></i>ATENDEMES: HORARIOS</p>
             </div>
         </div>
 
         <hr class="bg-light">
         <div class="row text-center">
             <div class="col-md-12">
-                <p>Copyright © 2024 Hospital de El Progreso | Todos los derechos reservados.</p>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#" class="text-white">Realizar una consulta</a></li>
-                    <li class="list-inline-item"><a href="#" class="text-white">Reservar una cita</a></li>
-                    <li class="list-inline-item"><a href="#" class="text-white">Términos y condiciones</a></li>
-                </ul>
+                <p>Copyright © 2024 Ministerios Aviva | Todos los derechos reservados.</p>
             </div>
         </div>
     </div>

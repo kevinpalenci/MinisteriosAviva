@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login y Registro con HTML5 y CSS3</title>
+    <title>Ministerios Aviva - Login</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/logotipo.png') }}" type="image/x-icon">
 <style>
     body {
-            background-image: url("{{ asset('img/body2.jpg') }}");
+            background-image: url("{{ asset('images/portada 2.jpeg') }}");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100% 100%;
