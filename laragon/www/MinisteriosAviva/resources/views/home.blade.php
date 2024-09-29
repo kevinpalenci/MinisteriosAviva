@@ -13,7 +13,7 @@
         <div class="row">
             <aside class="sidebar col-auto p-0">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
-                    <img src="logotipo.png" alt="Logo" class="logo-img">
+                <img src="{{ asset('images/logotipo.png') }}" alt="Logo" class="logo-img">
                     <button class="toggle-sidebar-btn btn text-white" onclick="toggleSidebar()">☰</button>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
                         <li class="nav-item">
@@ -91,7 +91,7 @@
         </div>
     </div>
     
-    <script href="{{ asset('css/home.js') }}"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
