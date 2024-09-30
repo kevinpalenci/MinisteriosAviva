@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
             $table->text('description');
-            $table->string('image_url', 255);
+            $table->text('image_url');
             $table->foreignId('author_id')->nullable()->constrained('users')->nullOnDelete()->unsigned();
             $table->timestamps();
         });
