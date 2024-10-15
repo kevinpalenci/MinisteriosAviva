@@ -1,0 +1,61 @@
+[2024-10-12 14:09:31] Éxito: composer install --no-dev --optimize-autoloader
+[2024-10-12 14:09:31] Éxito: npm install --production
+[2024-10-12 14:09:31] Éxito: php artisan optimize
+[2024-10-12 14:09:31] Éxito: php artisan config:cache
+[2024-10-12 14:09:31] Éxito: php artisan route:cache
+[2024-10-12 14:09:31] Éxito: php artisan view:cache
+[2024-10-12 14:09:31] Éxito: php artisan migrate --force
+[2024-10-12 14:09:31] Despliegue completado exitosamente.
+[2024-10-12 14:14:04] Éxito: composer install --no-dev --optimize-autoloader
+[2024-10-12 14:14:04] Éxito: npm install --production
+[2024-10-12 14:14:04] Éxito: php artisan optimize
+[2024-10-12 14:14:04] Éxito: php artisan config:cache
+[2024-10-12 14:14:04] Éxito: php artisan route:cache
+[2024-10-12 14:14:04] Éxito: php artisan view:cache
+[2024-10-12 14:14:04] Éxito: php artisan migrate --force
+[2024-10-12 14:14:04] Despliegue completado exitosamente.
+[2024-10-12 14:16:12] Éxito: composer install --no-dev --optimize-autoloader
+[2024-10-12 14:16:12] Éxito: npm install --production
+[2024-10-12 14:16:22] Éxito: php artisan optimize
+[2024-10-12 14:16:22] Éxito: php artisan config:cache
+[2024-10-12 14:16:22] Éxito: php artisan route:cache
+[2024-10-12 14:16:23] Éxito: php artisan view:cache
+[2024-10-12 14:16:24] Éxito: php artisan migrate --force
+[2024-10-12 14:16:24] Despliegue completado exitosamente.
+[2024-10-12 14:18:28] Éxito: composer install
+[2024-10-12 14:18:28] Éxito: npm run build
+[2024-10-12 14:18:28] Éxito: php artisan optimize
+[2024-10-12 14:18:29] Éxito: php artisan config:cache
+[2024-10-12 14:18:29] Éxito: php artisan route:cache
+[2024-10-12 14:18:30] Éxito: php artisan view:cache
+[2024-10-12 14:18:30] Éxito: php artisan migrate
+[2024-10-12 14:18:30] Despliegue completado exitosamente.
+[2024-10-12 14:36:41] Éxito: php artisan optimize
+[2024-10-12 14:36:42] Éxito: php artisan config:cache
+[2024-10-12 14:36:42] Éxito: php artisan route:cache
+[2024-10-12 14:36:42] Éxito: php artisan view:cache
+[2024-10-12 14:36:43] Éxito: php artisan migrate --force
+[2024-10-12 14:36:43] Despliegue completado exitosamente.
+[2024-10-12 15:22:55] Éxito: php artisan optimize
+[2024-10-12 15:22:56] Éxito: php artisan config:cache
+[2024-10-12 15:22:56] Éxito: php artisan route:cache
+[2024-10-12 15:22:57] Éxito: php artisan view:cache
+[2024-10-12 15:22:57] Éxito: php artisan migrate --force
+[2024-10-12 15:22:57] Despliegue completado exitosamente.
+[2024-10-12 15:24:23] Éxito: php artisan optimize
+[2024-10-12 15:24:23] Éxito: php artisan config:cache
+[2024-10-12 15:24:23] Éxito: php artisan route:cache
+[2024-10-12 15:24:24] Éxito: php artisan view:cache
+[2024-10-12 15:24:24] Éxito: php artisan migrate --force
+[2024-10-12 15:24:24] Despliegue completado exitosamente.
+[2024-10-12 17:13:14] Éxito: php artisan optimize
+[2024-10-12 17:13:14] Éxito: php artisan config:cache
+[2024-10-12 17:13:15] Éxito: php artisan route:cache
+[2024-10-12 17:13:15] Éxito: php artisan view:cache
+[2024-10-12 17:13:15] Éxito: php artisan migrate --force
+[2024-10-12 17:13:15] Despliegue completado exitosamente.
+[2024-10-12 17:21:17] Éxito: php artisan route:clear
+[2024-10-12 17:21:17] Éxito: php artisan config:clear
+[2024-10-12 17:21:18] Éxito: php artisan cache:clear
+[2024-10-12 17:21:18] Éxito: php artisan view:clear
+[2024-10-12 17:21:18] Éxito: php artisan migrate --force

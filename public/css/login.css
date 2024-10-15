@@ -1,63 +1,85 @@
-* {
-  font-family: 'Lato', sans-serif;
+html, body{
+	height: 100%;
+}
+body{
+	display: flex;
+	align-items: center;
+	background-image: linear-gradient( to right, #f12711, #f5af19);
+}
+a{
+	color: #842029;
+	text-decoration: none;
+}
+a:hover{
+	color: #5a1118;
+}
+.uf-form-signin {
+    width: 100%;
+    max-width: 350px;
+    padding: 15px;
+    margin: auto;
+}
+.uf-input-group .input-group-text {
+    background: #ffffff70;
+    color: #f8f9fa;
+    border: unset;
+    font-size: 18px;
+    padding: 15px;
+    width: 50px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+.uf-input-group .form-control {
+    border: unset;
+    border-left: 1px solid #ffffff05;
+    font-size: 16px;
+    background: #ffffff70;
 }
 
-#login-form {
-  background-color: rgba(235, 235, 205, 0.7);
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+.uf-input-group .form-control:focus {
+    box-shadow: unset;
+    background: #ffffff;
+}
+.btn-primary {
+    background-color: #23bd0f;
+    border-color: #1ea30d;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #23bd0f;
+    border-color: #1ea30d;
+}
+.uf-btn-primary {
+    background: #842029;
+    color: #fff;
 }
 
-.card-header {
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+.uf-btn-primary:hover {
+    background: #5a1118;
+    color: #fff;
 }
 
-input {
-  padding: 15px 10px;
-  margin: 5px 0px;
-  width: 100%;
-  color: #666;
-  border-radius: 1px;
-  border: 1px solid #ccc;
+.uf-form-check-input:checked {
+    background-color: #842029;
+    border-color: #842029;
 }
 
-button[type="submit"] {
-  background-color: rgb(34, 139, 34);
-  padding: 8px 13px;
-  margin: 10px 0px;
-  color: white;
-  border-radius: 3px;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
+.uf-social-login .uf-social-ic+.uf-social-ic{
+	margin-left: 15px;
 }
-
-button[type="submit"]:hover {
-  background-color: #57A639;
+.uf-social-ic{
+	width: 40px;
+	height: 40px;
+	background: #fff;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-
-a {
-  color: rgba(7, 7, 248, 0.562);
-  cursor: pointer;
-  font-size: 1.1rem;
-  text-decoration: none;
+.uf-social-ic:hover{
+	background: #842029;
 }
-
-a:hover {
-  color: rgba(11, 11, 190, 0.562);
-}
-
-a:focus {
-  color: rgba(3, 3, 85, 0.466);
+.uf-social-ic:hover i{
+	color: #fff;
 }

@@ -1,44 +1,36 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 
-// Página de bienvenida para usuarios no autenticados
-Route::get('/', function () {
-    return view('welcome');  // Asegúrate de que esta es la vista principal de tu página pública
-})->name('welcome');
+// Ruta base para mostrar la página de bienvenida
+Route::get('/', [BlogController::class, 'welcome'])->name('welcome');
 
-
-Route::get('/', [HomeController::class, 'index'])->name('welcome');
-
-
-// Ruta del dashboard para usuarios autenticados
-Route::get('/home', [HomeController::class, 'dashboard'])->name('home')->middleware('auth');
-
-// Rutas de autenticación (Login, Registro, etc.)
 Auth::routes();
 
-// Ruta para el dashboard (accesible solo para usuarios autenticados)
-Route::get('/home', [HomeController::class, 'dashboard'])->name('home')->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Ruta para suscripción de correo
-Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+// Ruta para suscripción
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 
-// Grupo de rutas protegidas para blogs y enseñanzas (solo accesibles después de autenticarse)
-Route::middleware(['auth'])->group(function () {
-    // Rutas para el manejo de blogs
-    Route::post('/blogs/store', [BlogController::class, 'store'])->name('blogs.store');
-    Route::resource('blogs', BlogController::class);  // Rutas RESTful para blogs
+// Ruta para los mensajes de contacto
+Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
+// Ruta para obtener la lista de blogs
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
 
+// Ruta para mostrar los suscriptores
+Route::get('/suscriptores', [HomeController::class, 'suscriptores'])->name('suscriptores');
 
-    Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->name('blogs.destroy');
-    Route::get('/blogs/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
-    Route::resource('blogs', BlogController::class);
+// Ruta para crear un blog
+Route::post('/blogs', [HomeController::class, 'storeBlog'])->name('store.blog');
 
-});
+// Ruta para actualizar un blog (solo una ruta)
+Route::put('/blogs/{blog}', [HomeController::class, 'updateBlog'])->name('update.blog');
 
-
+// Ruta para eliminar un blog
+Route::delete('/blogs/{blog}', [HomeController::class, 'destroyBlog'])->name('destroy.blog');
 

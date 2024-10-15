@@ -1,0 +1,463 @@
+/* =======================================================
+   Estilos generales y ajustes previos
+======================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding-top: 70px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #343a40;
+    color: white;
+}
+.bg-dark { 
+    background-color: #23bd0f !important; 
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer hr {
+    border-top: 1px solid white;
+}
+
+#map iframe {
+    width: 100%;
+    height: 400px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =======================================================
+   Estilos del Navbar
+======================================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade un sombreado si lo deseas */
+}
+
+.navbar-brand img {
+    width: 60px; /* Ajusta el ancho del logotipo */
+    height: auto; /* Mantiene la proporción del logotipo */
+}
+
+/* Colores de las letras del Navbar */
+.nav-link {
+    color: #333;
+}
+
+.nav-link:hover {
+    color: #23bd0f;
+}
+
+/* =======================================================
+   Estilos del Carrusel
+======================================================= */
+
+.carousel-item {
+    height: 880px; /* Altura exacta del carrusel */
+}
+
+.carousel-item img { 
+    width: 100vw; /* Ajusta la imagen al ancho de la ventana */
+    height: 100%;
+}
+
+.carousel-caption {
+    bottom: 20%;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Asegúrate de que tenga un z-index alto para que esté encima */
+}
+
+.carousel {
+    z-index: 1; /* El carrusel estará debajo del formulario */
+}
+
+
+.carousel-caption h5, .carousel-caption p {
+    color: white;
+}
+
+.carousel-caption h5 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 18px;
+}
+
+.carousel-caption .form-control {
+    border-radius: 0 0 0 5px;
+}
+
+.carousel-caption .btn {
+    border-radius: 0 5px 5px 0;
+}
+
+/* =======================================================
+   Formulario de contacto
+======================================================= */
+
+.appointment-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.appointment-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Alineación del texto y márgenes */
+.single-quote {
+    margin-bottom: 20px;
+}
+
+.single-quote i {
+    font-size: 24px;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.single-quote h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.single-quote p {
+    color: #777;
+    font-size: 14px;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #23bd0f;
+}
+h6 {
+    color: #fff;
+    font-size: 24px;
+}
+
+/* Estilo del formulario */
+.appointment-form input, .appointment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.appointment-form textarea {
+    resize: none;
+}
+
+.btn-primary {
+    background-color: #23bd0f;
+    border-color: #1ea30d;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #23bd0f;
+    border-color: #1ea30d;
+}
+
+/* Ajustes de espacios */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.text-end {
+    text-align: right;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .appointment-image {
+        margin-bottom: 20px;
+    }
+
+    .text-end {
+        text-align: center;
+    }
+}
+
+/* =======================================================
+   Sección de Misión, Visión, Horarios
+======================================================= */
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+.section-title h3 {
+    font-size: 32px;
+    color: #333;
+}
+
+.section-title span {
+    color: #23bd0f; /* Puedes cambiar este color si deseas otro tono */
+}
+
+.section-title .line {
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #23bd0f;
+    margin: 20px auto;
+}
+
+.single-about {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.single-about:hover {
+    transform: translateY(-10px);
+}
+
+.single-about-icon img {
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+h5 {
+    font-size: 20px;
+    color: #23bd0f;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 14px;
+    text-align: justify;
+}
+
+.single-about-icon img {
+    width: 50px;
+    height: 50px;
+}
+
+/* =======================================================
+   Estilos del Parallax
+======================================================= */
+
+.parallax-section {
+    position: relative;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+.parallax-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Oscurece un poco la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.parallax-section .overlay .content h1 {
+    color: #fff;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.parallax-section .overlay .content p {
+    color: #fff;
+    font-size: 18px;
+}
+
+.parallax-section .overlay .content .btn {
+    margin-top: 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* =======================================================
+   Sección de transmisiones con superposición oscura
+======================================================= */
+
+#transmisiones {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 50px 0;
+}
+
+#transmisiones .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La imagen cubrirá todo el contenedor */
+    z-index: 0;
+}
+
+#transmisiones .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Fondo oscuro con opacidad del 80% */
+    z-index: 1;
+}
+
+#transmisiones .container {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté por encima de la superposición */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#transmisiones h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #00ff88; /* Color verde fosforescente */
+}
+
+#transmisiones p {
+    font-size: 18px;
+    color: #ccc;
+}
+
+#transmisiones .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #1db954;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+#transmisiones .btn:hover {
+    background-color: #1aa34a;
+}
+
+#transmisiones .right-content img {
+    max-width: 800px;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    #transmisiones .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #transmisiones .right-content img {
+        margin-top: 20px;
+        max-width: 300px;
+    }
+}
+
+
+
+/* =======================================================
+   Sección de Blog con tarjetas de artículos 
+======================================================= */
+
+.single-service-item {
+    padding: 15px;
+}
+
+.single-service {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.single-service img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.single-service h5 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: #23bd0f;
+}
+
+.single-service p {
+    font-size: 14px;
+    color: #666;
+}
+
+.serv-rmbtn {
+    margin-top: 15px;
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.serv-rmbtn:hover {
+    background-color: #0056b3;
+}

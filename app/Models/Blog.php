@@ -9,5 +9,17 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'image_url', 'author_id'];
+    // Define los campos que pueden ser asignados en masa
+    protected $fillable = [
+        'user_id',
+        'title',
+        'description',
+        'image_url',
+    ];
+
+    // Relación: un blog pertenece a un usuario
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
