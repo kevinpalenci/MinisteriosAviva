@@ -28,9 +28,30 @@ Route::get('/suscriptores', [HomeController::class, 'suscriptores'])->name('susc
 // Ruta para crear un blog
 Route::post('/blogs', [HomeController::class, 'storeBlog'])->name('store.blog');
 
-// Ruta para actualizar un blog (solo una ruta)
+
+
+
+// Rutas para gestionar los blogs desde el dashboard
+Route::match(['get', 'post', 'put', 'delete'], '/home/blogs/{id?}', [HomeController::class, 'handleBlog'])->name('home.blogs');
+
+
+
+
+
+
+Route::get('/blogs/{id}', [BlogController::class, 'show']);
+
+// Ruta para obtener la lista de blogs (GET)
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+
+// Ruta para crear un blog (POST)
+Route::post('/blogs', [HomeController::class, 'storeBlog'])->name('store.blog');
+
+// Ruta para actualizar un blog (PUT)
 Route::put('/blogs/{blog}', [HomeController::class, 'updateBlog'])->name('update.blog');
 
-// Ruta para eliminar un blog
+// Ruta para eliminar un blog (DELETE)
 Route::delete('/blogs/{blog}', [HomeController::class, 'destroyBlog'])->name('destroy.blog');
 
+// Ruta para obtener un blog individual (GET)
+Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');

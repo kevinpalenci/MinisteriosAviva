@@ -215,7 +215,7 @@
                 <div class="modal-body">
                     <form id="editBlogForm" method="POST">
                         @csrf
-                        <!-- Usamos un campo oculto para identificar el blog -->
+                        @method('PUT')
                         <input type="hidden" id="edit_blog_id" name="blog_id">
                         <div class="mb-3">
                             <label for="edit_title" class="form-label">Título del Blog</label>
@@ -256,184 +256,153 @@
     <!-- Lógica de JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        async function crearBlog() {
-            event.preventDefault(); // Evitar que se recargue la página
 
-            const form = document.getElementById('blog-form');
 
-            if (!form) {
-                console.error('Formulario no encontrado.');
-                return;
-            }
 
-            const formData = new FormData(form);
+// Función para crear un blog
+function crearBlog() {
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const imageUrl = document.getElementById('image_url').value;
 
-            try {
-                const response = await fetch("{{ route('store.blog') }}", {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Blog creado',
-                        text: 'El blog ha sido creado exitosamente.'
-                    });
-
-                    // Agregar el nuevo blog a la tabla sin recargar la página
-                    const blogsTableBody = document.getElementById('blogsTableBody');
-                    blogsTableBody.innerHTML += `
-                <tr id="blog-${result.blog.id}">
-                    <td>${result.blog.title}</td>
-                    <td>${result.blog.description}</td>
-                    <td><img src="${result.blog.image_url}" alt="Imagen del blog" width="100"></td>
-                    <td>
-                        <button class="btn btn-warning" onclick="editarBlog(${result.blog.id})">Actualizar</button>
-                        <button class="btn btn-danger" onclick="eliminarBlog(${result.blog.id})">Eliminar</button>
-                    </td>
-                </tr>
-            `;
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'No se pudo crear el blog. Verifique los datos ingresados.'
-                    });
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Hubo un problema al procesar la solicitud.'
-                });
-            }
+    fetch('home/blogs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            title: title,
+            description: description,
+            image_url: imageUrl
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al crear el blog');
         }
+        return response.json();
+    })
+    .then(data => {
+        // Mostrar mensaje de éxito
+        Swal.fire('Éxito', 'Blog creado exitosamente', 'success');
+        agregarFilaATabla(data.blog); // Agregar el blog a la tabla sin recargar
+    })
+    .catch(error => {
+        Swal.fire('Error', 'No se pudo crear el blog. Verifique los datos ingresados.', 'error');
+    });
+}
+
+// Función para agregar una nueva fila a la tabla de blogs
+function agregarFilaATabla(blog) {
+    const blogsTableBody = document.getElementById('blogsTableBody');
+    
+    const fila = document.createElement('tr');
+    fila.id = `blog-${blog.id}`;
+
+    fila.innerHTML = `
+        <td>${blog.title}</td>
+        <td>${blog.description}</td>
+        <td><img src="${blog.image_url}" alt="Imagen del blog" width="100"></td>
+        <td>
+            <button class="btn btn-warning" onclick="editarBlog(${blog.id})">Actualizar</button>
+            <button type="button" class="btn btn-danger" onclick="eliminarBlog(${blog.id})">Eliminar</button>
+        </td>
+    `;
+    
+    blogsTableBody.appendChild(fila);
+}
+
+
+
+
+function actualizarBlog() {
+    const id = document.getElementById('edit_blog_id').value;
+    const title = document.getElementById('edit_title').value;
+    const description = document.getElementById('edit_description').value;
+    const imageUrl = document.getElementById('edit_image_url').value;
+
+    fetch(`home/blogs/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            title: title,
+            description: description,
+            image_url: imageUrl
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la solicitud');
+        }
+        return response.json();
+    })
+    .then(data => {
+        Swal.fire('Éxito', data.message, 'success');
+        actualizarFilaEnTabla(data.blog); // Llama a la función para actualizar la fila
+    })
+    .catch(error => {
+        Swal.fire('Error', 'No se pudo actualizar el blog.', 'error');
+    });
+}
+
+function actualizarFilaEnTabla(blog) {
+    const blogRow = document.getElementById(`blog-${blog.id}`);
+    
+    // Actualiza los valores de la fila
+    blogRow.querySelector('td:nth-child(1)').innerText = blog.title;
+    blogRow.querySelector('td:nth-child(2)').innerText = blog.description;
+    blogRow.querySelector('td:nth-child(3) img').src = blog.image_url;
+}
 
 
 
 
 
-        async function eliminarBlog(blogId) {
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: 'Esta acción no se puede deshacer.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Sí, eliminar'
-            }).then(async (result) => {
-                if (result.isConfirmed) {
-                    try {
-                        const response = await fetch(`/blogs/${blogId}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                            }
-                        });
 
-                        if (response.ok) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Blog eliminado',
-                                text: 'El blog ha sido eliminado exitosamente.'
-                            });
 
-                            // Eliminar la fila de la tabla sin recargar
-                            const blogRow = document.getElementById(`blog-${blogId}`);
-                            blogRow.remove();
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: 'No se pudo eliminar el blog.'
-                            });
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Hubo un problema al procesar la solicitud.'
-                        });
-                    }
+
+function eliminarBlog(id) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminarlo'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`home/blogs/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud');
+                }
+                return response.json();
+            })
+            .then(data => {
+                Swal.fire('Eliminado', data.message, 'success');
+                eliminarFilaDeTabla(id);
+            })
+            .catch(error => {
+                Swal.fire('Error', 'No se pudo eliminar el blog.', 'error');
             });
         }
+    });
+}
 
-
-
-        async function actualizarBlog() {
-            const blogId = document.getElementById('edit_blog_id').value;
-            const formData = new FormData(document.getElementById('editBlogForm'));
-
-            try {
-                const response = await fetch(`/blogs/${blogId}`, {
-                    method: 'PUT',  // Si prefieres, cambia a 'PUT'
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Blog actualizado',
-                        text: 'El blog ha sido actualizado exitosamente.'
-                    });
-
-                    // Actualizar la fila de la tabla sin recargar
-                    const blogRow = document.getElementById(`blog-${blogId}`);
-                    blogRow.querySelector('td:nth-child(1)').innerText = result.blog.title;
-                    blogRow.querySelector('td:nth-child(2)').innerText = result.blog.description;
-                    blogRow.querySelector('td:nth-child(3) img').src = result.blog.image_url;
-
-                    const editBlogModal = bootstrap.Modal.getInstance(document.getElementById('editBlogModal'));
-                    editBlogModal.hide();
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'No se pudo actualizar el blog.'
-                    });
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Hubo un problema al procesar la solicitud.'
-                });
-            }
-        }
-
-        function editarBlog(id) {
-            // Obtener los datos del blog desde la fila de la tabla
-            const blogRow = document.getElementById(`blog-${id}`);
-            const title = blogRow.querySelector('td:nth-child(1)').innerText;
-            const description = blogRow.querySelector('td:nth-child(2)').innerText;
-            const imageUrl = blogRow.querySelector('td:nth-child(3) img').src;
-
-            // Rellenar los campos del modal con los datos del blog
-            document.getElementById('edit_blog_id').value = id;
-            document.getElementById('edit_title').value = title;
-            document.getElementById('edit_description').value = description;
-            document.getElementById('edit_image_url').value = imageUrl;
-
-            // Mostrar el modal
-            const editBlogModal = new bootstrap.Modal(document.getElementById('editBlogModal'));
-            editBlogModal.show();
-        }
+function eliminarFilaDeTabla(id) {
+    const fila = document.getElementById(`blog-${id}`);
+    fila.remove();
+}
 
 
 
@@ -443,20 +412,20 @@
 
 
 
+function editarBlog(id) {
+    const blogRow = document.getElementById(`blog-${id}`);
+    const title = blogRow.querySelector('td:nth-child(1)').innerText;
+    const description = blogRow.querySelector('td:nth-child(2)').innerText;
+    const imageUrl = blogRow.querySelector('td:nth-child(3) img').src;
 
+    document.getElementById('edit_blog_id').value = id;
+    document.getElementById('edit_title').value = title;
+    document.getElementById('edit_description').value = description;
+    document.getElementById('edit_image_url').value = imageUrl;
 
-
-
-
-
-
-
-
-
-
-
-
-
+    const editBlogModal = new bootstrap.Modal(document.getElementById('editBlogModal'));
+    editBlogModal.show();
+}
 
 
     </script>

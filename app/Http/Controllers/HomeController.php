@@ -53,58 +53,88 @@ class HomeController extends Controller
     }
 
 
-    public function storeBlog(Request $request)
+    public function handleBlog(Request $request, $id = null)
     {
-        // Validar los datos del formulario
-        $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'image_url' => 'required|url',
-        ]);
-
-        // Crear el blog
-        $blog = Blog::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'image_url' => $request->image_url,
-            'author_id' => auth()->id(), // Suponiendo que quieres asignar el usuario autenticado como autor
-        ]);
-
-        return response()->json([
-            'message' => 'Blog creado exitosamente.',
-            'blog' => $blog
-        ]);
+        // Método GET: Obtener un blog específico o todos los blogs
+        if ($request->isMethod('get')) {
+            if ($id) {
+                // Retornar un blog específico
+                return response()->json(Blog::findOrFail($id));
+            } else {
+                // Retornar todos los blogs
+                return response()->json(Blog::all());
+            }
+        }
+    
+        // Método POST: Crear un nuevo blog
+        if ($request->isMethod('post')) {
+            // Validación del blog para la creación
+            $request->validate([
+                'title' => 'required|max:255',
+                'description' => 'required',
+                'image_url' => 'required|url',
+            ]);
+    
+            // Creación del blog
+            $blog = Blog::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'image_url' => $request->image_url,
+                'author_id' => auth()->id(),  // Si tienes un sistema de autenticación
+            ]);
+    
+            return response()->json([
+                'message' => 'Blog creado exitosamente.',
+                'blog' => $blog
+            ]);
+        }
+    
+        // Método PUT: Actualizar un blog existente
+        if ($request->isMethod('put')) {
+            // Validar si el blog existe
+            $blog = Blog::find($id);
+            if (!$blog) {
+                return response()->json(['message' => 'Blog no encontrado.'], 404);
+            }
+    
+            // Validar los datos
+            $request->validate([
+                'title' => 'required|max:255',
+                'description' => 'required',
+                'image_url' => 'required|url',
+            ]);
+    
+            // Actualizar el blog
+            $blog->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'image_url' => $request->image_url,
+            ]);
+    
+            return response()->json([
+                'message' => 'Blog actualizado exitosamente.',
+                'blog' => $blog
+            ], 200);
+        }
+    
+        // Método DELETE: Eliminar un blog existente
+        if ($request->isMethod('delete')) {
+            // Validar si el blog existe
+            $blog = Blog::find($id);
+            if (!$blog) {
+                return response()->json(['message' => 'Blog no encontrado.'], 404);
+            }
+    
+            // Eliminar el blog
+            $blog->delete();
+    
+            return response()->json(['message' => 'Blog eliminado exitosamente.'], 200);
+        }
+    
+        // Si llega un método no permitido
+        return response()->json(['message' => 'Método no permitido.'], 405);
     }
+    
 
-    public function updateBlog(Request $request, Blog $blog)
-    {
-        // Validar los datos del formulario
-        $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'image_url' => 'required|url',
-        ]);
 
-        // Actualizar el blog
-        $blog->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'image_url' => $request->image_url,
-        ]);
-
-        return response()->json([
-            'message' => 'Blog actualizado exitosamente.',
-            'blog' => $blog
-        ]);
-    }
-
-    public function destroyBlog(Blog $blog)
-    {
-        // Eliminar el blog
-        $blog->delete();
-
-        return response()->json([
-            'message' => 'Blog eliminado exitosamente.'
-        ]);
-    }
 }
