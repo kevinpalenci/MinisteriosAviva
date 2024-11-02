@@ -74,11 +74,11 @@
                     style="height: 880px;">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('imagenes/portada.jpeg') }}" class="d-block w-100" alt="Imagen 2"
+                <img src="{{ asset('imagenes/portada2.jpeg') }}" class="d-block w-100" alt="Imagen 2"
                     style="height: 880px;">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('imagenes/portada.jpeg') }}" class="d-block w-100" alt="Imagen 3"
+                <img src="{{ asset('imagenes/parallax.jpeg') }}" class="d-block w-100" alt="Imagen 3"
                     style="height: 880px;">
             </div>
         </div>
@@ -97,7 +97,8 @@
         <!-- Formulario de Suscripción (Fijo dentro del Carrusel) -->
         <div class="carousel-caption d-md-block overlay">
             <h5>¡Únete a nuestra comunidad Ministerios Aviva!</h5>
-            <p style="text-align: center;">Te invitamos a formar parte de Ministerios Aviva...</p>
+            <p style="text-align: center;">Te invitamos a formar parte de Ministerios Aviva, ingresa tu correo si deseas
+                estar al tanto de nuestras transmisiones</p>
             <form id="subscribeForm" method="POST" action="{{ route('subscribe') }}">
                 @csrf
                 <div class="input-group mb-3">
@@ -130,9 +131,10 @@
                         <div class="single-about-icon">
                             <img class="img-fluid" src="{{ asset('imagenes/icon-2.png') }}" alt="Icono Misión" />
                         </div>
-                        <h5>Misión</h5>
-                        <p>Llevar el mensaje del Evangelio de Jesucristo, edificando una comunidad de fe y amor para
-                            todos.</p>
+                        <h5>Quienes somos?</h5>
+                        <p>Somos un equipo de personas apasionadas por servir al señor y a las personas que tengan la
+                            misma pasion por realizar las cosas con excelencia y estar mejorando, para darle lo mejor a
+                            Dios</p>
                     </div>
                 </div>
                 <!-- end single about -->
@@ -141,9 +143,9 @@
                         <div class="single-about-icon">
                             <img class="img-fluid" src="{{ asset('imagenes/icon-1.png') }}" alt="Icono Visión" />
                         </div>
-                        <h5>Visión</h5>
-                        <p>Ser reconocidos como un ministerio global que impacta vidas a través de la difusión del
-                            Evangelio.</p>
+                        <h5>Que hacemos?</h5>
+                        <p>Buscamos ayudar, orientar, equipar, capacitar e impulsar el trabajo de las iglesias,
+                            ministerios, directivas, grupos o personas dentro de la obra del señor.</p>
                     </div>
                 </div>
                 <!-- end single about -->
@@ -153,8 +155,7 @@
                             <img class="img-fluid" src="{{ asset('imagenes/icon-4.png') }}" alt="Icono Historia" />
                         </div>
                         <h5>Historia</h5>
-                        <p>Desde nuestros inicios, hemos trabajado incansablemente para expandir la palabra de Dios a
-                            nivel global.</p>
+                        <p>Ministerios aviva, inicio en Noviembre de 2022.</p>
                     </div>
                 </div>
                 <!-- end single about -->
@@ -163,9 +164,12 @@
                         <div class="single-about-icon">
                             <img class="img-fluid" src="{{ asset('imagenes/icon-3.png') }}" alt="Icono Objetivo" />
                         </div>
-                        <h5>Objetivo</h5>
-                        <p>Proporcionar apoyo espiritual y pastoral a quienes más lo necesitan, ayudando a fortalecer su
-                            fe en Dios.</p>
+                        <h5>Nuestros pilares</h5>
+                        <p>* Adoracion</p>
+                        <p>* Comunion</p>
+                        <p>* Discipulado</p>
+                        <p>* Evangelismo</p>
+                        <p>* Ministerio</p>
                     </div>
                 </div>
                 <!-- end single about -->
@@ -190,7 +194,8 @@
             <div class="left-content">
                 <h1 class="text-success">Martes - 8:00 de la noche</h1>
                 <p class="text-white">Ministerios Aviva y RENUEVA TV</p>
-                <a href="https://open.spotify.com" target="_blank" class="btn btn-success">Escuchar en Spotify</a>
+                <a href="https://open.spotify.com/show/2cI6tBx9bVilvv9WwE5DRF" target="_blank"
+                    class="btn btn-success">Escuchar en Spotify</a>
             </div>
             <div class="right-content">
                 <img src="{{ asset('imagenes/telefono.png') }}" alt="Imagen de teléfono" class="img-fluid">
@@ -202,55 +207,43 @@
 
 
     <!-- Sección de Blogs -->
-    <section class="bg-light py-5" id="blog">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2>BLOG</h2>
-                    <p style="text-align: center;">Últimas entradas del blog.</p>
-                    <span class="line"></span>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="owl-carousel owl-theme blog-carousel">
-                    @foreach($blogs as $blog)
-                        <div class="item">
-                            <div class="single-service-item">
-                                <div class="single-service">
-                                    <img src="{{ $blog->image_url }}" class="img-fluid" alt="Imagen del blog" />
-                                    <h5>{{ $blog->title }}</h5>
-                                    <p>{{ Str::limit($blog->description, 100) }}</p>
-                                    <button class="btn btn-primary"
-                                        onclick="verMasBlog('{{ $blog->title }}', '{{ $blog->description }}', '{{ $blog->image_url }}', '{{ $blog->created_at }}')">
-                                        Ver más
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+<section class="bg-light py-5" id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>BLOG</h2>
+                <p style="text-align: center;">Últimas entradas del blog.</p>
+                <span class="line"></span>
             </div>
         </div>
-    </section>
-
-    <!-- Modal para ver más detalles del blog -->
-    <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="blogModalLabel">Título del Blog</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img id="blogImage" class="img-fluid mb-3" src="" alt="">
-                    <p id="blogDescription"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
+        <div class="row mt-4">
+            <div class="owl-carousel owl-theme blog-carousel">
+                <!-- Aquí se insertarán los blogs mediante JavaScript -->
             </div>
         </div>
     </div>
+</section>
+
+<!-- Modal para ver más detalles del blog -->
+<div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="blogModalLabel">Título del Blog</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="blogImage" class="img-fluid mb-3" src="" alt="">
+                <p id="blogDescription"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 
@@ -436,64 +429,6 @@
 
 
     <script>
-        $.ajax({
-            url: "http://localhost/MinisteriosAviva/public/blogs",
-            method: "GET",
-            success: function (data) {
-                if (typeof data === 'string') {
-                    data = JSON.parse(data);
-                }
-
-                data.forEach(function (blog) {
-                    var blogHtml = `
-                <div class="single-service-item">
-                    <div class="single-service">
-                        <img class="img-fluid" src="${blog.image_url}" alt="${blog.title}" />
-                        <h5>${blog.title}</h5>
-                        <p>${blog.description.substring(0, 100)}</p>
-                        <a class="serv-rmbtn" href="#">Read More</a>
-                    </div>
-                </div>
-            `;
-                    $(".blog-slider").trigger('add.owl.carousel', [$(blogHtml)]).trigger('refresh.owl.carousel');
-                });
-            },
-            error: function (err) {
-                console.log("Error al cargar los blogs", err);
-            }
-        });
-
-        $(document).ready(function () {
-            const blogCount = {{ $blogs->count() }}; // Pasas el conteo de blogs desde el controlador
-
-            $(".blog-carousel").owlCarousel({
-                loop: blogCount > 1,  // Si hay más de 1 blog, activa el loop
-                margin: 10,
-                nav: true,
-                responsive: {
-                    0: { items: 1 },
-                    600: { items: 2 },
-                    1000: { items: 4 }
-                }
-            });
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // Código JavaScript básico para manejar el carrusel o acciones futuras
         document.addEventListener("DOMContentLoaded", function () {
             console.log("Página cargada");
@@ -582,49 +517,80 @@
 
 
 
-        document.addEventListener("DOMContentLoaded", function () {
-            cargarBlogs();
-        });
-
         function cargarBlogs() {
-            fetch("/MinisteriosAviva/public/blogs") // Asegúrate de usar la ruta correcta
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json(); // Esto convierte la respuesta en formato JSON
-                })
-                .then(blogs => {
-                    const blogContainer = document.getElementById('blog-container');
-                    blogContainer.innerHTML = ''; // Limpiar el contenedor antes de cargar las nuevas tarjetas
+    fetch("/MinisteriosAviva/public/blogs")
+        .then(response => response.json())
+        .then(blogs => {
+            const blogContainer = document.querySelector('.blog-carousel');
 
-                    // Iterar sobre los blogs y generar HTML para cada uno
-                    blogs.forEach(blog => {
-                        const blogCard = `
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100">
-                            <img src="${blog.image_url}" class="card-img-top blog-image" alt="Imagen del blog">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">${blog.title}</h5>
-                                <p class="card-text blog-description">${blog.description.substring(0, 100)}...</p>
-                                <button class="btn btn-primary" onclick="verMasBlog('${blog.title}', '${blog.description}', '${blog.image_url}', '${blog.created_at}')">Ver más</button>
+            // Destruir el carrusel completamente si ya fue inicializado
+            if ($(".blog-carousel").hasClass('owl-loaded')) {
+                $(".blog-carousel").trigger('destroy.owl.carousel').removeClass('owl-carousel owl-theme');
+                $(".blog-carousel").html('');  // Limpiar el contenedor de blogs
+            }
+
+            // Asegurar que no haya duplicados: verificar por ID de blog
+            const blogIds = new Set();
+            
+            blogs.forEach(blog => {
+                if (!blogIds.has(blog.id)) { // Verificar si el blog ya ha sido insertado
+                    blogIds.add(blog.id); // Agregar el ID a nuestro Set
+                    const blogCard = `
+                        <div class="item">
+                            <div class="single-service-item">
+                                <div class="single-service">
+                                    <img src="${blog.image_url}" class="img-fluid" alt="Imagen del blog">
+                                    <h5>${blog.title}</h5>
+                                    <p>${blog.description.substring(0, 100)}...</p>
+                                    <button class="btn btn-primary" data-title="${blog.title}" 
+                                        data-description="${blog.description}" data-image_url="${blog.image_url}" 
+                                        data-created_at="${blog.created_at}" onclick="verMasBlog(this)">
+                                        Ver más
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                `;
-                        blogContainer.insertAdjacentHTML('beforeend', blogCard);
-                    });
-                })
-                .catch(error => console.error('Error:', error));
-        }
+                        </div>`;
+                    blogContainer.insertAdjacentHTML('beforeend', blogCard);
+                }
+            });
 
-        function verMasBlog(title, description, image_url, created_at) {
-            document.getElementById('blogModalLabel').textContent = title;
-            document.getElementById('blogImage').src = image_url;
-            document.getElementById('blogDescription').textContent = description;
-            // Abre el modal
-            $('#blogModal').modal('show');
-        }
+            // Re-inicializar el carrusel después de agregar nuevos elementos
+            $(".blog-carousel").owlCarousel({
+                loop: false,  // Cambia loop a "false" para que NO se repitan los blogs
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: { items: 1 },
+                    600: { items: 2 },
+                    1000: { items: 4 }
+                }
+            });
+        })
+        .catch(error => console.error('Error al cargar los blogs:', error));
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    cargarBlogs();  // Llamar a cargar blogs al cargar la página
+});
+
+function verMasBlog(button) {
+    const title = button.getAttribute('data-title');
+    const description = button.getAttribute('data-description');
+    const image_url = button.getAttribute('data-image_url');
+
+    // Asegurarte de que los elementos existan en el DOM antes de asignarles valores
+    document.getElementById('blogModalLabel').textContent = title;
+    document.getElementById('blogImage').src = image_url;
+    document.getElementById('blogDescription').textContent = description;
+
+    // Mostrar el modal
+    $('#blogModal').modal('show');
+}
+
+
+
+
+
 
 
 
